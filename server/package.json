@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "Project that allows to expose points of interest in an interactive map and allow user to rate them",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --env-file=.env --watch src/index.js"
   },
   "author": "AngelVT",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "express": "^5.1.0"
   }
 }
