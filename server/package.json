@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Project that allows to expose points of interest in an interactive map and allow user to rate them",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AngelVT",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
