@@ -1,32 +1,45 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { API_URL } from "./config/env.config.js";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import PrivateRoute from "./components/PrivateRoute";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import MapPage from "./pages/MapPage";
+import RegisterPoint from "./pages/RegisterPoint";
+import AdminPanel from "./pages/AdminPanel";
 
 function App() {
-  const [serverMessage, setServerMessage] = useState("");
-
-  useEffect(() => {
-    axios.get(`${API_URL}/ping`)
-      .then((response) => {
-        setServerMessage(response.data.msg);
-      })
-      .catch((error) => {
-        if (error.response) {
-          setServerMessage(error.response.data.msg || "Unknown server error");
-        } else if (error.request) {
-          setServerMessage("No response from server");
-        } else {
-          setServerMessage("Error setting up request");
-        }
-        console.error("Error calling backend:", error);
-      });
-  }, []);
-
   return (
-    <div style={{ padding: "2rem", fontFamily: "Arial" }}>
-      <h1>Frontend ↔ Backend Test</h1>
-      <p>Response from server: <strong>{serverMessage}</strong></p>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/map" element={<MapPage />} />
+
+          {/* Protected Routes */}
+          <Route
+            path="/register-point"
+            element={
+              <PrivateRoute>
+                <RegisterPoint />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <PrivateRoute>
+                <AdminPanel />
+              </PrivateRoute>
+            }
+          />
+
+          <Route path="*" element={<Login />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
