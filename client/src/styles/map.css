@@ -8,7 +8,8 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    transition: width 0.3s ease, padding 0.3s ease;
+    flex-direction: column;
+    transition: width 0.3s ease-in-out, padding 0.3s ease-in-out, height 0.3s ease-in-out;
     width: 40px;
     height: 40px;
     z-index: 999;
@@ -16,29 +17,28 @@
 
 .user-control:hover {
     width: auto;
-    padding: 0 10px;
+    height: auto;
+    padding: 0 15px;
+    border-radius: 15px;
 }
 
 .user-control img {
-    margin-left: 8px;
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 4px;
 }
 
-.user-control:hover img {
-    margin-left: 0px;
+.user-control span {
+    margin: 0 0 4px 0;
 }
 
 .user-control button,
 .user-control a {
-    margin-left: 8px;
     border: none;
     background: none;
     cursor: pointer;
     font-size: 14px;
     text-decoration: none;
     color: #333;
-}
-
-.user-control button:hover,
-.user-control a:hover {
-    text-decoration: underline;
+    margin: 0 0 8px 0;
 }

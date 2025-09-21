@@ -36,7 +36,7 @@ function App() {
             }
           />
 
-          <Route path="*" element={<Login />} />
+          <Route path="*" element={<MapPage />} />
         </Routes>
       </Router>
     </AuthProvider>

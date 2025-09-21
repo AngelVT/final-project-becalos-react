@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../config/env.config.js";
 import { useNavigate } from "react-router-dom";
+import "../styles/login.css"
 
 axios.defaults.withCredentials = true;
 
@@ -41,10 +42,10 @@ function Login() {
     };
 
     return (
-        <div style={{ padding: "2rem" }}>
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
+        <div className="login-container">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h2>Login</h2>
+                <div className="form-group">
                     <label>Username: </label>
                     <input
                         type="text"
@@ -53,7 +54,7 @@ function Login() {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Password: </label>
                     <input
                         type="password"
@@ -62,9 +63,15 @@ function Login() {
                         required
                     />
                 </div>
-                <button type="submit">Login</button>
+
+                {error && <p className="error">{error}</p>}
+
+                <button type="submit" className="btn-login">Login</button>
+
+                <p className="register-link" onClick={() => navigate("/register")}>
+                    Register here!
+                </p>
             </form>
-            {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
     );
 }

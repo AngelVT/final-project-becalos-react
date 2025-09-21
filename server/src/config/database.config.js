@@ -1,6 +1,5 @@
 import { Sequelize } from "sequelize";
-import { IM_DB_DATABASE, IM_DB_USER, IM_DB_PASSWORD, IM_DB_HOST, IM_DB_PORT, IM_DB_DIALECT, IM_DB_TIMEZONE, IM_DEFAULT_USER, IM_DEFAULT_PASSWORD } from './environment.config.js';
-import User from "../modules/users/models/user.model.js";
+import { IM_DB_DATABASE, IM_DB_USER, IM_DB_PASSWORD, IM_DB_HOST, IM_DB_PORT, IM_DB_DIALECT, IM_DB_TIMEZONE } from './environment.config.js';
 
 export const pool =  new Sequelize(IM_DB_DATABASE, IM_DB_USER, IM_DB_PASSWORD, {
     host: IM_DB_HOST,
@@ -12,18 +11,9 @@ export const pool =  new Sequelize(IM_DB_DATABASE, IM_DB_USER, IM_DB_PASSWORD, {
 
 export async function initSchemas() {
     await pool.query('CREATE SCHEMA IF NOT EXISTS users');
+    await pool.query('CREATE SCHEMA IF NOT EXISTS points');
 }
 
-export async function syncModels() {
-    await User.sync();
-}
-
-export async function setDefaultUser() {
-    if(await User.count() === 0) {
-        const createdUser = await User.create({
-            name: 'Default User',
-            username: IM_DEFAULT_USER,
-            password: IM_DEFAULT_PASSWORD,
-        });
-    }
+export async function initExtensions() {
+    await pool.query('CREATE EXTENSION IF NOT EXISTS postgis');
 }

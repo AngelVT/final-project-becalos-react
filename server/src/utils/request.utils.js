@@ -26,3 +26,11 @@ export function requestHandler(requestFn) {
         }
     }
 }
+
+export const pong = (req, res) => {
+    res.status(200).json({ msg: "pong" });
+}
+
+export const notFound = (req, res) => {
+    res.status(404).json({ msg: "Resource not found" });
+}

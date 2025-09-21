@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config/env.config.js";
-import UserIcon from "../assets/user-icon.svg?component";
+import UserIcon from "../assets/user-icon.svg";
 
 axios.defaults.withCredentials = true;
 
@@ -20,7 +20,7 @@ function RecenterMap({ position, zoom }) {
 }
 
 function Map() {
-    const [position, setPosition] = useState([19.4326, -99.1332]); // Default CDMX
+    const [position, setPosition] = useState([19.4326, -99.1332]);
     const [hasLocation, setHasLocation] = useState(false);
     const [username, setUsername] = useState(null);
     const navigate = useNavigate();
@@ -83,12 +83,12 @@ function Map() {
 
                 {username ? (
                     <>
-                        <span style={{ marginLeft: "8px" }}>{username}</span>
-                        <button onClick={() => navigate("/point-register")}>Register</button>
+                        <span>{username}</span>
+                        <button onClick={() => navigate("/register-point")}>Register point</button>
                         <button onClick={handleLogout}>Logout</button>
                     </>
                 ) : (
-                    <Link to="/login" style={{ marginLeft: "8px" }}>
+                    <Link to="/login">
                         Login
                     </Link>
                 )}
