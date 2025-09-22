@@ -6,7 +6,13 @@ export const pool =  new Sequelize(IM_DB_DATABASE, IM_DB_USER, IM_DB_PASSWORD, {
     port: IM_DB_PORT,
     dialect: IM_DB_DIALECT,
     logging: false,
-    timezone: IM_DB_TIMEZONE
+    timezone: IM_DB_TIMEZONE,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    }
 });
 
 export async function initSchemas() {
