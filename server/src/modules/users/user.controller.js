@@ -12,7 +12,7 @@ export const createUser = requestHandler(
             httpOnly: true,
             secure: true,
             signed: true,
-            sameSite: 'strict',
+            sameSite: 'none',
             maxAge: appVariables.COOKIE_EXP
         });
 

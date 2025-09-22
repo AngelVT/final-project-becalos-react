@@ -11,7 +11,7 @@ export const signIn = requestHandler(async (req, res) => {
         httpOnly: true,
         secure: true,
         signed: true,
-        sameSite: 'strict',
+        sameSite: 'none',
         maxAge: appVariables.COOKIE_EXP
     });
     
@@ -23,7 +23,7 @@ export const signOut = async (req, res) => {
         httpOnly: true,
         secure: true,
         signed: true,
-        sameSite: 'strict',
+        sameSite: 'none',
     });
 
     return res.status(200).json({ msg: "Logged out" });
