@@ -6,7 +6,6 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MapPage from "./pages/MapPage";
 import RegisterPoint from "./pages/RegisterPoint";
-import AdminPanel from "./pages/AdminPanel";
 
 function App() {
   return (
@@ -24,14 +23,6 @@ function App() {
             element={
               <PrivateRoute>
                 <RegisterPoint />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              <PrivateRoute>
-                <AdminPanel />
               </PrivateRoute>
             }
           />

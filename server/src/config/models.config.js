@@ -9,6 +9,16 @@ export async function syncModels() {
     await Rating.sync();
 }
 
+export function initAssociations() {
+    User.belongsToMany(Point, { through: Rating, foreignKey: "user_id" });
+    Point.belongsToMany(User, { through: Rating, foreignKey: "point_id" });
+
+    Point.hasMany(Rating, { foreignKey: "point_id", as: "ratings" });
+    Rating.belongsTo(Point, { foreignKey: "point_id" });
+
+    Rating.belongsTo(User, { foreignKey: "user_id" });
+}
+
 export async function setDefaultUser() {
     if(await User.count() === 0) {
         const createdUser = await User.create({

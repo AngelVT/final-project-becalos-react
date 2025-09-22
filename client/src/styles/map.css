@@ -42,3 +42,73 @@
     color: #333;
     margin: 0 0 8px 0;
 }
+
+/* Popup container */
+.popup-content {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    color: #333;
+    max-width: 220px;
+}
+
+/* Title */
+.popup-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.3em;
+    display: block;
+}
+
+/* Description */
+.popup-description {
+    margin-bottom: 0.5em;
+}
+
+/* Average rating */
+.popup-rating {
+    margin-bottom: 0.3em;
+    font-weight: 500;
+}
+
+/* Total ratings */
+.popup-total-ratings {
+    margin-bottom: 0.5em;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* User rating section */
+.popup-user-rating {
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3em;
+}
+
+/* Slider */
+.rating-slider {
+    width: 100%;
+}
+
+/* Stars under slider */
+.rating-stars {
+    font-size: 1.2em;
+    color: #FFD700;
+}
+
+/* Rate button */
+.rating-button {
+    background-color: #4169e1; /* Pink like other buttons */
+    color: white;
+    border: none;
+    padding: 0.3em 0.6em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 0.85rem;
+}
+
+.rating-button:hover {
+    background-color: #27408b;
+}

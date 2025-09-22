@@ -19,10 +19,11 @@ export async function verifyToken(req, res, next) {
             return res.status(401).json({ msg: 'Invalid token provided' });
         }
 
-        req.user = {};
-        req.user.userID = user.id;
-        req.user.name = user.name;
-        req.user.username = user.username;
+        req.user = {
+            userID: user.user_id,
+            name: user.name,
+            username: user.username,
+        };
 
         next();
     } catch(error) {

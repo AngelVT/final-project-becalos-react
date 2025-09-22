@@ -26,3 +26,44 @@ export async function requestPointCreation(name, description, location) {
         point: newPoint
     }
 }
+
+export async function requestAllPoints() {
+    const points = await pointRepo.findAll();
+
+    const features = points.map((p) => ({
+        type: "Feature",
+        geometry: p.location,
+        properties: {
+            point_id: p.point_id,
+            name: p.name,
+            description: p.description,
+            average_score: p.average_score,
+            total_ratings: p.total_ratings,
+        },
+    }));
+
+    return {
+        geojson: {
+            type: "FeatureCollection",
+            features,
+        },
+    };
+}
+
+export async function requestPointRate(pointId, score, userId) {
+    if (isNaN(parseInt(score))) {
+        throw new ValidationError("The score provided is invalid.");
+    }
+
+    const intScore = parseInt(score);
+
+    if (intScore > 10 || intScore < 0) {
+        throw new ValidationError("The score provided is invalid, valid scores go from 0 to 10.");
+    }
+
+    const ratedPoint = await pointRepo.findAndRatePoint(pointId, intScore, userId);
+
+    return {
+        point: ratedPoint
+    };
+}

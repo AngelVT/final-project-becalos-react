@@ -10,3 +10,23 @@ export const createPoint = requestHandler(
         res.status(200).json(response);
     }
 );
+
+export const ratePoint = requestHandler(
+    async function (req, res) {
+        const { pointID } = req.params;
+        const { score } = req.body;
+        const userId = req.user.userID;
+
+        const response = await pointService.requestPointRate(pointID, score, userId);
+
+        res.status(200).json(response);
+    }
+);
+
+export const getAllPoints = requestHandler(
+    async function (req, res) {
+        const response = await pointService.requestAllPoints();
+
+        res.status(200).json(response);
+    }
+);
