@@ -4,7 +4,7 @@ import { syncModels, setDefaultUser, initAssociations } from "./models.config.js
 export async function initDB() {
     await initExtensions();
     await initSchemas();
-    await syncModels();
     await initAssociations();
+    await syncModels();
     await setDefaultUser();
 }

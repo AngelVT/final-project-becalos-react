@@ -9,7 +9,7 @@ export async function syncModels() {
     await Rating.sync();
 }
 
-export function initAssociations() {
+export async function initAssociations() {
     User.belongsToMany(Point, { through: Rating, foreignKey: "user_id" });
     Point.belongsToMany(User, { through: Rating, foreignKey: "point_id" });
 
