@@ -355,13 +355,13 @@ function PointRegister() {
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
                     <div className="form-group">
                         <label>Name:</label>
-                        <input type="text" {...register("name")} />
+                        <input type="text" placeholder="Enter a name for this point" {...register("name")} />
                         {errors.name && <p className="error">{errors.name.message}</p>}
                     </div>
 
                     <div className="form-group">
                         <label>Description:</label>
-                        <textarea {...register("description")} />
+                        <textarea placeholder="Enter a description for this point" {...register("description")} />
                         {errors.description && <p className="error">{errors.description.message}</p>}
                     </div>
 

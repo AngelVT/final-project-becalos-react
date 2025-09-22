@@ -266,7 +266,8 @@ function Map() {
                         <button onClick={handleLogout}>Logout</button>
                     </>
                 ) : (
-                    <Link to="/login">Login</Link>
+                    //<Link to="/login">Login</Link>
+                    <button onClick={() => navigate("/login")}>LogIn</button>
                 )}
             </div>
         </div>

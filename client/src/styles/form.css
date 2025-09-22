@@ -58,6 +58,7 @@ button {
 
 button:hover {
     background-color: #3657c5;
+    color: #fff;
 }
 
 .map-wrapper {
